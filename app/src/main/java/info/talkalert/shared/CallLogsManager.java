@@ -33,13 +33,13 @@ public class CallLogsManager {
 
     private PersistenceService<ExcludedPhoneNumbers> persistanceService;
 
-    Pair<LocalDate, LocalDateTime> dates = null;
+    private Pair<LocalDate, LocalDateTime> dates = null;
 
     private String countryCode="";
 
     public CallLogsManager(Context context) {
         persistanceService = ExcludedPhoneNumbersPersistenceService.getInstance(context);
-        ;
+
     }
 
     public CallLogData readCallLogs(List<ExcludedPhoneNumbers> excludedPhoneNumbers, Context context) {
@@ -72,7 +72,7 @@ public class CallLogsManager {
 
         CallLogData logData = handleLoadedCallLogs(cursor, excludedPhoneNumbers,preferences);
 
-        cursor.close();
+        if(cursor != null)cursor.close();
 
         return logData;
     }
@@ -147,6 +147,7 @@ public class CallLogsManager {
         managedCursor.close();
 
         return new CallLogData(preferences.getMinutes(), finalDurationPercents, durationSumInMinutes, excludedDurationSumInMinutes, dates.first, dates.second);
+        //return new CallLogData(preferences.getMinutes(), 56, 56, 2, dates.first, dates.second);
     }
 
     private boolean checkIsNumberDomestic(Preferences preferences, String pNumber, PhoneNumberUtil pnu){
@@ -155,7 +156,7 @@ public class CallLogsManager {
 
         if (!preferences.countLocalCalls()) return true;
 
-        Phonenumber.PhoneNumber pn=null;
+        Phonenumber.PhoneNumber pn;
         try {
             pn = pnu.parse(pNumber,countryCode);
             logger.d("Phone numbers country code: ", pn.getCountryCode());
@@ -194,7 +195,7 @@ public class CallLogsManager {
         return persistanceService.getAll();
     }
 
-    public Pair<LocalDate, LocalDateTime> createDateRange(Preferences preferences) {
+    private Pair<LocalDate, LocalDateTime> createDateRange(Preferences preferences) {
 
         LocalDate monthBegin = new LocalDate().withDayOfMonth(preferences.getDay());
         LocalDateTime monthEnd = monthBegin.plusMonths(1).plusDays(1).toLocalDateTime(LocalTime.MIDNIGHT);
