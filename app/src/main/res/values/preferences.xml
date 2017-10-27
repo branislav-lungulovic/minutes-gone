@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--DEFAULT VALUES-->
+    <integer name="default_day">1</integer>
+    <integer name="default_minutes">100</integer>
+    <integer name="default_alert_level">100</integer>
+    <bool name="default_count_local_calls">true</bool>
+
+    <!--KEYS- NOT TO BE TRANSLATED-->
+    <string name="key_day" translatable="false">day</string>
+    <string name="key_minutes" translatable="false">minutes</string>
+    <string name="key_alert_level" translatable="false">alert_level</string>
+    <string name="key_count_local_calls" translatable="false">count_local_calls</string>
+    <string name="key_dialing_code" translatable="false"></string>
+    <string name="key_lastNotificationSentDate" translatable="false"></string>
+</resources>

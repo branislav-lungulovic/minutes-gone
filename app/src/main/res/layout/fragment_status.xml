@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+>
+<android.support.v7.widget.GridLayout
+    android:id="@+id/gaugeMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    app:columnCount="2"
+    app:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/gaugeContainer"
+        app:layout_columnSpan="2"
+        app:layout_columnWeight="2"
+        app:layout_rowWeight="16">
+
+
+
+        <pl.pawelkleczkowski.customgauge.CustomGauge
+            android:id="@+id/gauge"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            app:gaugeEndValue="100"
+            app:gaugePointEndColor="@color/gaugePointEndColor"
+            app:gaugePointStartColor="@color/gaugePointStartColor"
+            app:gaugeStartAngle="135"
+            app:gaugeStartValue="0"
+            app:gaugeStrokeCap="BUTT"
+            app:gaugeStrokeColor="@color/gaugeStrokeColor"
+            app:gaugeStrokeWidth="14dp"
+            app:gaugeSweepAngle="270" />
+
+        <TextView
+            android:id="@+id/textViewValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/gauge"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="65dp"
+            android:text="100%"
+            android:textAlignment="center"
+            android:textColor="@color/accent"
+            android:textSize="60dp"
+            android:textStyle="normal" />
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/gauge"
+
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/textViewFrom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_large" />
+
+            <TextView
+                android:id="@+id/textViewMin"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/min_abrivation"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_small" />
+
+            <TextView
+                android:id="@+id/textViewTo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="100"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_large" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvDateInterval"
+        android:gravity="right"
+        android:text="--"
+        app:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_marginRight="5dp"
+        app:layout_columnWeight="2"
+        app:layout_columnSpan="2"
+        app:layout_rowWeight="1"
+        />
+
+
+
+
+    <TextView
+        android:id="@+id/tvPlanDesc"
+        android:gravity="right"
+        android:text="@string/plan_limit_desc"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="bold"
+        android:layout_marginRight="5dp"
+        app:layout_columnWeight="1"
+        app:layout_rowWeight="1"
+        android:minWidth="130dp"
+        />
+
+    <TextView
+        android:id="@+id/tvPlanVal"
+        android:gravity="left"
+        android:text="--"
+        android:layout_marginLeft="5dp"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_columnWeight="1"
+        app:layout_rowWeight="1"
+        android:minWidth="130dp"
+        android:typeface="monospace"
+        />
+
+
+    <TextView
+        android:id="@+id/tvIncludedCallMinutesDesc"
+        android:gravity="right"
+        android:text="@string/call_minutes"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="bold"
+        android:layout_marginRight="5dp"
+        app:layout_columnWeight="1"
+        app:layout_rowWeight="1"
+        />
+
+    <TextView
+        android:id="@+id/tvIncludedCallMinutesVal"
+        android:gravity="left"
+        android:text="--"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_marginLeft="5dp"
+        app:layout_columnWeight="1"
+        app:layout_rowWeight="1"
+        android:typeface="monospace"/>
+
+    <TextView
+        android:id="@+id/tvExcludedCallMinutesDesc"
+        android:gravity="right"
+        android:text="@string/free_minutes"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="bold"
+        android:layout_marginRight="5dp"
+        app:layout_columnWeight="1"
+        app:layout_rowWeight="1"
+        />
+
+    <TextView
+        android:id="@+id/tvExcludedCallMinutesVal"
+        android:gravity="left"
+        android:text="--"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_marginLeft="5dp"
+        app:layout_columnWeight="1"
+        app:layout_rowWeight="1"
+        android:typeface="monospace"/>
+
+    <android.support.v4.widget.Space
+        app:layout_columnSpan="2"
+        app:layout_columnWeight="2"
+        app:layout_rowWeight="11" />
+
+
+
+
+</android.support.v7.widget.GridLayout>
+</ScrollView>

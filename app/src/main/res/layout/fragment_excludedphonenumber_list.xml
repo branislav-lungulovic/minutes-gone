@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+   >
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/phone_list"
+        android:name="info.talkalert.ExcludedPhoneNumberFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="info.talkalert.fragments.ExcludedPhoneNumberFragment"
+        tools:listitem="@layout/fragment_excludedphonenumber" />
+
+    <TextView
+        android:id="@+id/empty_text"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:padding="@dimen/margin_padding_normal"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:visibility="gone"
+        android:textSize="@dimen/text_size_huge"
+        android:textColor="@color/primary_dark"
+        android:text="@string/no_data_found"
+        android:fontFamily="sans-serif-condensed"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_add_24dp"
+        app:rippleColor="@color/primary_light"
+        />
+
+
+</android.support.design.widget.CoordinatorLayout>

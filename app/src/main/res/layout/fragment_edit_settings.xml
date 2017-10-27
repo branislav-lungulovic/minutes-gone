@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tedFrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edDay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dayInMonth"
+                android:inputType="number"
+
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tedMinutes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tedFrom"
+            android:layout_marginTop="15dp">
+
+
+            <EditText
+                android:id="@+id/edMinutes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/minutes"
+                android:inputType="number"
+
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tedAlertLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tedMinutes"
+            android:layout_marginTop="15dp">
+
+
+            <EditText
+                android:id="@+id/edAlertLevel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/alert_level"
+                android:inputType="number"
+
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/alertLevelNotice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tedAlertLevel"
+            android:text="@string/alert_level_notice"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="italic" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/swCountLocalCalls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/alertLevelNotice"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:padding="20dp"
+            android:text="@string/count_only_local_calls"
+            android:textColor="@color/secondary_text"
+            android:textOff=""
+            android:textOn="" />
+
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/swCountLocalCalls"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/tedFrom"
+            android:text="@string/save" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/swCountLocalCalls"
+            android:layout_toLeftOf="@id/btnSave"
+            android:text="@string/cancel" />
+
+
+    </RelativeLayout>
+</ScrollView>

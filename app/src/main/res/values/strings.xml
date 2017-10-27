@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">minutes gone</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="status_fragment" translatable="false">Status fragment</string>
+
+    <string name="edit_phone_fragment" translatable="false">Hello edit phone</string>
+    <string name="phone_num">Phone number</string>
+    <string name="dayInMonth">Start billing day in month</string>
+    <string name="dayInMonth_required">Start day in month is required</string>
+    <string name="to">to</string>
+    <string name="contact_name">Contact name</string>
+    <string name="alert_level_notice">(Alert level in percents. Zero value: no alerts)</string>
+    <string name="alert_level">Alert level</string>
+    <string name="dialog_title" translatable="false"></string>
+    <string name="phone_is_required">Phone number is required</string>
+    <string name="settings_saved">Settings saved</string>
+
+    <string name="change_number">Change number</string>
+    <string name="add_number">Add number</string>
+    <string name="add">Add</string>
+    <string name="change">Change</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="no_data_found">No data found</string>
+    <string name="loading_data">Loading data...</string>
+    <string name="delete">Delete</string>
+    <string name="period">Period</string>
+    <string name="minutes">Minutes</string>
+    <string name="minutes_required">Minutes are required</string>
+    <string name="alert_level_perc_error">Alert level is required and must be between 0 and 100</string>
+    <string name="status">Spent minutes</string>
+    <string name="phone_list">Free numbers list</string>
+
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+    <string name="gauge_header">plan</string>
+    <string name="min_abrivation">(minutes)</string>
+    <string name="plan_limit_desc">Plan limit:</string>
+    <string name="plan_limit_value"><![CDATA[%1$s <b>min</b>]]></string>
+    <string name="measured_time_interval"><![CDATA[ %1$s <b>-</b> %2$s]]></string>
+    <string name="call_minutes">Calls included in plan</string>
+    <string name="call_minutes_val"><![CDATA[%1$s <b>min</b>]]></string>
+    <string name="free_minutes">Other calls:</string>
+    <string name="free_minutes_val"><![CDATA[%1$s <b>min</b>]]></string>
+    <string name="contact_saved">Contact saved</string>
+    <string name="item_deleted">item deleted.</string>
+
+    <string name="quota_alert">You have reached %1$s of your monthly quota for allowed number of minutes.</string>
+    <string name="count_only_local_calls">Include only domestic calls in plan</string>
+    <string name="plan_counter">minutes gone</string>
+    <string name="about">About App</string>
+    <string name="about_app_info">About application</string>
+    <string name="name">Name:</string>
+    <string name="version">Version:</string>
+    <string name="licence">Licence:</string>
+    <string name="about_author">About author</string>
+    <string name="author_name">Branislav Lungulovic</string>
+    <string name="author_contact">Contact:</string>
+    <string name="about_credit">Many thanks to</string>
+    <string name="about_credit_text"><![CDATA[Logo made by Prosymbols. Downloaded from http://www.flaticon.com/authors/prosymbols]]></string>
+    <string name="author_name_label">Name:</string>
+
+
+</resources>
