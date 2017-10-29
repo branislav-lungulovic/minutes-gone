@@ -1,6 +1,7 @@
 package info.talkalert.activities;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,8 +24,6 @@ import info.talkalert.fragments.StatusFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    private Fragment excludedListFragment = null;
 
 
     @Override
@@ -102,7 +101,6 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
         return super.onOptionsItemSelected(item);
     }
@@ -120,7 +118,6 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_excluded_phones:
                 fragment = new ExcludedPhoneNumberFragment();
                 shouldAddToBackStack = true;
-                excludedListFragment = fragment;
                 break;
             case R.id.settings:
                 fragment = new EditSettingsFragment();
@@ -145,7 +142,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 

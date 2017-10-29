@@ -8,16 +8,13 @@ import android.util.Log;
 
 import static info.talkalert.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.*;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+class DatabaseHelper extends SQLiteOpenHelper {
     private final static String LOG_TAG = DatabaseHelper.class.getSimpleName();
     private final static int DATABASE_VERSION= 1;
-    public static final String DATABASE_NAME = "talkalert.db";
-
-    private Context mContext;
+    private static final String DATABASE_NAME = "talkalert.db";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        mContext = context;
     }
 
 

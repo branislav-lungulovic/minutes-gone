@@ -20,7 +20,8 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_weight="0.31"
-        app:srcCompat="@drawable/ic_hourglass_001" />
+        app:srcCompat="@drawable/ic_hourglass_001"
+        android:contentDescription="@string/application_logo"/>
 
     <TextView
         android:layout_width="match_parent"

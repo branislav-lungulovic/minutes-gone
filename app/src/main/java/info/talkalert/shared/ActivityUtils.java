@@ -15,6 +15,9 @@ import info.talkalert.models.Preferences;
 
 public class ActivityUtils {
 
+    public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
+    public static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 2;
+
     public static Preferences readPreferences(Context context){
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
@@ -53,10 +56,10 @@ public class ActivityUtils {
     public static void saveStringPreference(Context context, String value, String keyName) {
 
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);;
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(keyName, value);
-        editor.commit();
+        editor.apply();
 
 
     }
@@ -64,13 +67,13 @@ public class ActivityUtils {
     public static void saveSettings(Context context, int day, int minutes, int alertLevel, boolean countLocalCalls) {
 
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);;
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(context.getString(R.string.key_day), day);
         editor.putInt(context.getString(R.string.key_minutes), minutes);
         editor.putInt(context.getString(R.string.key_alert_level), alertLevel);
         editor.putBoolean(context.getString(R.string.key_count_local_calls), countLocalCalls);
-        editor.commit();
+        editor.apply();
 
 
     }
@@ -85,7 +88,7 @@ public class ActivityUtils {
 
 
 
-    public static String getContryCodeFromPhone(Context context){
+    static String getContryCodeFromPhone(Context context){
 
         TelephonyManager telephonyMngr = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 

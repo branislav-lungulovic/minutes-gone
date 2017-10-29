@@ -10,9 +10,9 @@ import info.talkalert.shared.LoggerUtils;
 
 public class LoadContactsTask extends AsyncTask<Activity,LoadedContactsData,LoadedContactsData> {
 
-    private static Logger logger = LoggerUtils.getLogger(LoadContactsTask.class.getName());
+    private static final Logger logger = LoggerUtils.getLogger(LoadContactsTask.class.getName());
 
-    private OnTaskEnd<LoadedContactsData> onTaskEnd;
+    private final OnTaskEnd<LoadedContactsData> onTaskEnd;
 
     public LoadContactsTask(OnTaskEnd<LoadedContactsData> onTaskEnd) {
         this.onTaskEnd = onTaskEnd;
@@ -94,7 +94,7 @@ public class LoadContactsTask extends AsyncTask<Activity,LoadedContactsData,Load
 
 
                                 // Add ArrayList names to adapter
-                                data.nameAndPhoneValueArr.add(nameAndNumber.toString());
+                                data.nameAndPhoneValueArr.add(nameAndNumber);
 
                                 j++;
                                 k++;

@@ -10,29 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import info.talkalert.R;
-import info.talkalert.fragments.ExcludedPhoneNumberFragment.OnListFragmentInteractionListener;
-import info.talkalert.data.DummyContent.DummyItem;
-import info.talkalert.models.ExcludedPhoneNumbers;
-
 import java.util.List;
 
-import static android.R.color.darker_gray;
+import info.talkalert.R;
+import info.talkalert.fragments.ExcludedPhoneNumberFragment.OnListFragmentInteractionListener;
+import info.talkalert.models.ExcludedPhoneNumbers;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- */
+
 public class ExcludedPhoneNumberRecyclerViewAdapter extends RecyclerView.Adapter<ExcludedPhoneNumberRecyclerViewAdapter.ViewHolder> {
 
     private List<ExcludedPhoneNumbers> mValues;
-    private final OnListFragmentInteractionListener mListener;
     private SparseBooleanArray mSelectedItemsIds;
-    private Context context;
+    private final Context context;
 
     public ExcludedPhoneNumberRecyclerViewAdapter(Context context, List<ExcludedPhoneNumbers> items, OnListFragmentInteractionListener listener) {
         mValues = items;
-        mListener = listener;
         mSelectedItemsIds = new SparseBooleanArray();
         this.context = context;
     }
@@ -101,7 +93,7 @@ public class ExcludedPhoneNumberRecyclerViewAdapter extends RecyclerView.Adapter
 
 
     //Put or delete selected position into SparseBooleanArray
-    public void selectView(int position, boolean value) {
+    private void selectView(int position, boolean value) {
         if (value)
             mSelectedItemsIds.put(position, value);
         else

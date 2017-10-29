@@ -2,9 +2,6 @@ package info.talkalert.adapters;
 
 
 import android.app.Activity;
-import android.database.Cursor;
-import android.provider.ContactsContract;
-import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -12,9 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import info.talkalert.shared.Logger;
 import info.talkalert.shared.LoggerUtils;
@@ -26,7 +21,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class AutoCompleteContacts implements AdapterView.OnItemClickListener, OnTaskEnd<LoadedContactsData> {
 
-    private static Logger logger = LoggerUtils.getLogger(AutoCompleteContacts.class.getName());
+    private static final Logger logger = LoggerUtils.getLogger(AutoCompleteContacts.class.getName());
 
     private EditText phoneEditText;
     private EditText contactNameEditText;
@@ -36,8 +31,6 @@ public class AutoCompleteContacts implements AdapterView.OnItemClickListener, On
     private Activity activity;
 
     private static ArrayList<String> nameAndPhoneValueArr = new ArrayList<>();
-
-    private boolean autoCompleteAdded = false;
 
 
     public static AutoCompleteContacts build(Activity activity) {
@@ -80,7 +73,6 @@ public class AutoCompleteContacts implements AdapterView.OnItemClickListener, On
             editTextAuto.setThreshold(1);
             editTextAuto.setAdapter(adapter);
             editTextAuto.setOnItemClickListener(this);
-            autoCompleteAdded = true;
         }
 
     }
@@ -88,7 +80,7 @@ public class AutoCompleteContacts implements AdapterView.OnItemClickListener, On
     protected AutoCompleteContacts() {
     }
 
-    ;
+
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

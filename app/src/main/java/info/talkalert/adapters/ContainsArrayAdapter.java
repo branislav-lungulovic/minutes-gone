@@ -1,6 +1,7 @@
 package info.talkalert.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -13,19 +14,19 @@ import java.util.List;
 import info.talkalert.shared.Logger;
 import info.talkalert.shared.LoggerUtils;
 
-public class ContainsArrayAdapter extends ArrayAdapter<String> implements Filterable {
+class ContainsArrayAdapter extends ArrayAdapter<String> implements Filterable {
 
     private ArrayList<String> fullList;
     private ArrayList<String> mOriginalValues;
     private ArrayFilter mFilter;
 
-    private static Logger logger = LoggerUtils.getLogger(ContainsArrayAdapter.class.getName());
+    private static final Logger logger = LoggerUtils.getLogger(ContainsArrayAdapter.class.getName());
 
     public ContainsArrayAdapter(Context context, int resource, List<String> objects) {
 
         super(context, resource, objects);
         fullList = (ArrayList<String>) objects;
-        mOriginalValues = new ArrayList<String>(fullList);
+        mOriginalValues = new ArrayList<>(fullList);
 
     }
 
@@ -39,11 +40,13 @@ public class ContainsArrayAdapter extends ArrayAdapter<String> implements Filter
         return fullList.get(position);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         return super.getView(position, convertView, parent);
     }
 
+    @NonNull
     @Override
     public Filter getFilter() {
         if (mFilter == null) {
@@ -54,7 +57,7 @@ public class ContainsArrayAdapter extends ArrayAdapter<String> implements Filter
 
 
     private class ArrayFilter extends Filter {
-        private Object lock = new Object();
+        private final Object lock = new Object();
 
         @Override
         protected FilterResults performFiltering(CharSequence prefix) {
@@ -64,13 +67,13 @@ public class ContainsArrayAdapter extends ArrayAdapter<String> implements Filter
 
             if (mOriginalValues == null) {
                 synchronized (lock) {
-                    mOriginalValues = new ArrayList<String>(fullList);
+                    mOriginalValues = new ArrayList<>(fullList);
                 }
             }
 
             if (prefix == null || prefix.length() == 0) {
                 synchronized (lock) {
-                    ArrayList<String> list = new ArrayList<String>(mOriginalValues);
+                    ArrayList<String> list = new ArrayList<>(mOriginalValues);
                     results.values = list;
                     results.count = list.size();
                 }
@@ -80,7 +83,7 @@ public class ContainsArrayAdapter extends ArrayAdapter<String> implements Filter
                 ArrayList<String> values = mOriginalValues;
                 int count = values.size();
 
-                ArrayList<String> newValues = new ArrayList<String>(count);
+                ArrayList<String> newValues = new ArrayList<>(count);
 
                 for (int i = 0; i < count; i++) {
                     String item = values.get(i);
@@ -104,7 +107,7 @@ public class ContainsArrayAdapter extends ArrayAdapter<String> implements Filter
             if(results.values!=null){
                 fullList = (ArrayList<String>) results.values;
             }else{
-                fullList = new ArrayList<String>();
+                fullList = new ArrayList<>();
             }
             if (results.count > 0) {
                 notifyDataSetChanged();

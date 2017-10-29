@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.provider.CallLog;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.util.Pair;
-import android.widget.Toast;
 
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
@@ -29,9 +28,9 @@ import info.talkalert.tasks.ParseCallLogTask;
 
 public class CallLogsManager {
 
-    private static Logger logger = LoggerUtils.getLogger(ParseCallLogTask.class.getName());
+    private static final Logger logger = LoggerUtils.getLogger(ParseCallLogTask.class.getName());
 
-    private PersistenceService<ExcludedPhoneNumbers> persistanceService;
+    private final PersistenceService<ExcludedPhoneNumbers> persistanceService;
 
     private Pair<LocalDate, LocalDateTime> dates = null;
 
@@ -56,15 +55,11 @@ public class CallLogsManager {
         String[] mSelectionArgs = {String.valueOf(dates.first.toDate().getTime()), String.valueOf(dates.second.toDate().getTime())};
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            Toast.makeText(context, "Error parsing call logs. Please enable call logs read access.", Toast.LENGTH_LONG).show();
-            return null;
+
+
+
+
+            return new CallLogData(true);
         }
 
         logger.d("readCallLOgs loaded logs");
@@ -80,7 +75,6 @@ public class CallLogsManager {
     private CallLogData handleLoadedCallLogs(Cursor managedCursor, List<ExcludedPhoneNumbers> excludedPhoneNumbers, Preferences preferences) {
         int numberIndex = managedCursor.getColumnIndex(CallLog.Calls.NUMBER);
         int typeIndex = managedCursor.getColumnIndex(CallLog.Calls.TYPE);
-        int dateIndex = managedCursor.getColumnIndex(CallLog.Calls.DATE);
         int durationIndex = managedCursor.getColumnIndex(CallLog.Calls.DURATION);
 
         int count = 0;
@@ -132,7 +126,7 @@ public class CallLogsManager {
 
         }
 
-        //durationSum = 56*60;
+        durationSum = 56*60;
         durationSumInMinutes = Math.round(durationSum / 60);
         excludedDurationSum += notDomesticSum;
 
@@ -164,7 +158,7 @@ public class CallLogsManager {
             logger.e("Error parsing phone number: ", pNumber,"exception: ", e);
             return true;
         }
-        if (pn != null && pn.getCountryCode() == pnu.getCountryCodeForRegion(countryCode)) {
+        if ( pn.getCountryCode() == pnu.getCountryCodeForRegion(countryCode)) {
             logger.d("Phone number: ", pNumber, " IS domestic call ");
             return true;
         }

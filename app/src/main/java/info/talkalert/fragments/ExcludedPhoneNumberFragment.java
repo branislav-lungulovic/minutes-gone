@@ -43,7 +43,7 @@ public class ExcludedPhoneNumberFragment extends Fragment implements OnGetAllTas
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
-    List<ExcludedPhoneNumbers> excludedPhoneNumbers;
+    private List<ExcludedPhoneNumbers> excludedPhoneNumbers;
 
     private RecyclerView rView;
     private TextView emptyText;
@@ -196,12 +196,12 @@ public class ExcludedPhoneNumberFragment extends Fragment implements OnGetAllTas
         loadData();
     }
 
-    public void showEmptyText() {
+    private void showEmptyText() {
         emptyText.setVisibility(View.VISIBLE);
         rView.setVisibility(View.GONE);
     }
 
-    public void hideEmptyText() {
+    private void hideEmptyText() {
         emptyText.setVisibility(View.GONE);
         rView.setVisibility(View.VISIBLE);
     }

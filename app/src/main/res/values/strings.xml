@@ -64,6 +64,7 @@
     <string name="about_credit">Many thanks to</string>
     <string name="about_credit_text"><![CDATA[Logo made by Prosymbols. Downloaded from http://www.flaticon.com/authors/prosymbols]]></string>
     <string name="author_name_label">Name:</string>
+    <string name="application_logo">Application logo</string>
 
 
 </resources>

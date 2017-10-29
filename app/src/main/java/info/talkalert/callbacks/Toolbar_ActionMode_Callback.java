@@ -1,38 +1,27 @@
 package info.talkalert.callbacks;
 
-import android.content.Context;
-import android.os.Build;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.view.ActionMode;
-import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import info.talkalert.R;
-import info.talkalert.activities.MainActivity;
 import info.talkalert.adapters.ExcludedPhoneNumberRecyclerViewAdapter;
 import info.talkalert.fragments.ExcludedPhoneNumberFragment;
 import info.talkalert.models.ExcludedPhoneNumbers;
 
 public class Toolbar_ActionMode_Callback implements ActionMode.Callback {
 
-    private ExcludedPhoneNumberFragment fragment;
-    private ExcludedPhoneNumberRecyclerViewAdapter recyclerView_adapter;
-    private List<ExcludedPhoneNumbers> message_models;
-    private boolean isListViewFragment;
+    private final ExcludedPhoneNumberFragment fragment;
+    private final ExcludedPhoneNumberRecyclerViewAdapter recyclerView_adapter;
 
 
     public Toolbar_ActionMode_Callback(ExcludedPhoneNumberFragment fragment, ExcludedPhoneNumberRecyclerViewAdapter recyclerView_adapter, List<ExcludedPhoneNumbers> message_models, boolean isListViewFragment) {
         this.fragment = fragment;
         this.recyclerView_adapter = recyclerView_adapter;
-        this.message_models = message_models;
-        this.isListViewFragment = isListViewFragment;
+        List<ExcludedPhoneNumbers> message_models1 = message_models;
+        boolean isListViewFragment1 = isListViewFragment;
     }
 
     @Override
@@ -44,13 +33,8 @@ public class Toolbar_ActionMode_Callback implements ActionMode.Callback {
     @Override
     public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
 
-        //Sometimes the meu will not be visible so for that we need to set their visibility manually in this method
-        //So here show action menu according to SDK Levels
-        if (Build.VERSION.SDK_INT < 11) {
-            MenuItemCompat.setShowAsAction(menu.findItem(R.id.action_delete), MenuItemCompat.SHOW_AS_ACTION_NEVER);
-        } else {
+
             menu.findItem(R.id.action_delete).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        }
 
         return true;
     }

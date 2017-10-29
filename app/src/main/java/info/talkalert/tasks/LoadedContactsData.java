@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class LoadedContactsData {
 
-    public ArrayList<String> phoneValueArr = new ArrayList<>();
-    public ArrayList<String> nameValueArr = new ArrayList<>();
-    public ArrayList<String> nameAndPhoneValueArr = new ArrayList<>();
+    private final ArrayList<String> phoneValueArr = new ArrayList<>();
+    private final ArrayList<String> nameValueArr = new ArrayList<>();
+    public final ArrayList<String> nameAndPhoneValueArr = new ArrayList<>();
 
 
     @Override

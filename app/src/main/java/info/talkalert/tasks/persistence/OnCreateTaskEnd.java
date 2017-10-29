@@ -1,6 +1,6 @@
 package info.talkalert.tasks.persistence;
 
-public interface OnCreateTaskEnd {
+interface OnCreateTaskEnd {
 
     public void onCreateTaskEnd();
 }

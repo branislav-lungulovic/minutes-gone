@@ -44,7 +44,7 @@ public class ColorUtils {
         throw new RuntimeException();
     }
 
-    public static int lerpColor( int colorA, int colorB, float t){
+    private static int lerpColor(int colorA, int colorB, float t){
         int alpha = (int)Math.floor(Color.alpha(colorA) * ( 1 - t ) + Color.alpha(colorB) * t);
         int red   = (int)Math.floor(Color.red(colorA)   * ( 1 - t ) + Color.red(colorB)   * t);
         int green = (int)Math.floor(Color.green(colorA) * ( 1 - t ) + Color.green(colorB) * t);

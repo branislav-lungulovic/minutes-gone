@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Toast;
 
 import org.joda.time.LocalDate;
 
@@ -45,6 +46,11 @@ public class CallEndReceiver extends BroadcastReceiver implements OnTaskEnd<Call
     @Override
     public void onTaskEnd(CallLogData logData) {
 
+        if(logData.isPermissionError()){
+            Toast.makeText(context, "Please enable call logs read access.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Preferences preferences = ActivityUtils.readPreferences(context);
 
         if(preferences.getAlertLevel() > 0 && preferences.getAlertLevel() <= logData.getPlanaLimitPercent() && notificationCanBeSend(preferences)){
@@ -55,10 +61,7 @@ public class CallEndReceiver extends BroadcastReceiver implements OnTaskEnd<Call
     }
 
     private boolean notificationCanBeSend(Preferences preferences) {
-        if(preferences.getLastNotificationSentDate() != null && preferences.getLastNotificationSentDate().getMonthOfYear()== new LocalDate().getMonthOfYear()){
-            return false;
-        }
-        return true;
+        return !(preferences.getLastNotificationSentDate() != null && preferences.getLastNotificationSentDate().getMonthOfYear() == new LocalDate().getMonthOfYear());
     }
 
     private void sendNotification(String message){

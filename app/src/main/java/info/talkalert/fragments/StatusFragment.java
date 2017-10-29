@@ -1,25 +1,24 @@
 package info.talkalert.fragments;
 
-import android.animation.ArgbEvaluator;
+import android.Manifest;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.SyncStateContract;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayout;
-import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 
@@ -39,7 +38,6 @@ import pl.pawelkleczkowski.customgauge.CustomGauge;
 public class StatusFragment extends Fragment implements OnTaskEnd<CallLogData> {
 
     private CustomGauge gauge;
-    private RelativeLayout gaugeContainer;
     private TextView textViewValue;
     private TextView textViewHeader;
     private TextView textViewTo;
@@ -55,7 +53,7 @@ public class StatusFragment extends Fragment implements OnTaskEnd<CallLogData> {
 
     private static boolean firstStart =true;
 
-    private static Logger logger = LoggerUtils.getLogger(StatusFragment.class.getName());
+    private static final Logger logger = LoggerUtils.getLogger(StatusFragment.class.getName());
 
     private static final int URL_LOADER = 1;
 
@@ -100,7 +98,6 @@ public class StatusFragment extends Fragment implements OnTaskEnd<CallLogData> {
         View view = inflater.inflate(R.layout.fragment_status, container, false);
 
         gauge = (CustomGauge) view.findViewById(R.id.gauge);
-        gaugeContainer = (RelativeLayout) view.findViewById(R.id.gaugeContainer);
 
         textViewValue = (TextView) view.findViewById(R.id.textViewValue);
         textViewValue.setText("0%");
@@ -116,29 +113,89 @@ public class StatusFragment extends Fragment implements OnTaskEnd<CallLogData> {
 
         hideData();
 
-        new ParseCallLogTask(this).execute(getActivity());
-
-        TelephonyManager telemamanger = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        String getSimSerialNumber = telemamanger.getSimSerialNumber();
-        final String simCountry = telemamanger.getSimCountryIso();
-        String getSimNumber = telemamanger.getLine1Number();
-
-
         return view;
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(
+                    new String[]{Manifest.permission.READ_CONTACTS},
+                    ActivityUtils.MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+        }else{
+
+            new ParseCallLogTask(this).execute(getActivity());
+        }
+
+        if (ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+
+
+            requestPermissions(
+                    new String[]{Manifest.permission.READ_PHONE_STATE},
+                    ActivityUtils.MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+
+
+        }
+
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case ActivityUtils.MY_PERMISSIONS_REQUEST_READ_CONTACTS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    new ParseCallLogTask(this).execute(getActivity());
+
+                } else {
+
+                    Toast.makeText(this.getContext(), "Please enable read call logs access.", Toast.LENGTH_LONG).show();
+                }
+
+                return;
+            }
+
+            case ActivityUtils.MY_PERMISSIONS_REQUEST_READ_PHONE_STATE: {
+                // If request is cancelled, the result arrays are empty.
+                if (!(grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+
+                    Toast.makeText(this.getContext(), "Please enable read phone state access.", Toast.LENGTH_LONG).show();
+
+
+                }
+
+            }
+
+
+        }
     }
 
     @Override
     public void onTaskEnd(CallLogData val) {
         logger.d("onTaskEnd called with value: ",val);
         if(isAdded()){
+
+            if(val.isPermissionError()){
+                Toast.makeText(getContext(), "Please enable call logs read access.", Toast.LENGTH_LONG).show();
+                return;
+            }
             showData(val);
         }
 
     }
 
 
-    public void showData(final CallLogData data) {
+    private void showData(final CallLogData data) {
 
         gaugeMainLayout.setAlpha(1.0f);
 
@@ -170,7 +227,7 @@ public class StatusFragment extends Fragment implements OnTaskEnd<CallLogData> {
 
     }
 
-    public void hideData() {
+    private void hideData() {
 
 
         gaugeMainLayout.setAlpha(0.15f);

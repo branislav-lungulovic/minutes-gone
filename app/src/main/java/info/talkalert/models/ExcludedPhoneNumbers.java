@@ -3,7 +3,6 @@ package info.talkalert.models;
 import android.provider.BaseColumns;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class ExcludedPhoneNumbers implements Serializable {
 

@@ -2,7 +2,7 @@ package info.talkalert.tasks;
 
 import android.os.AsyncTask;
 
-public class LoadExcludedContactsTask extends AsyncTask {
+class LoadExcludedContactsTask extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] params) {

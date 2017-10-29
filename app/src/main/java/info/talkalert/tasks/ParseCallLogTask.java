@@ -14,9 +14,7 @@ public class ParseCallLogTask extends AsyncTask<Context,CallLogData,CallLogData>
 
     private static Logger logger = LoggerUtils.getLogger(ParseCallLogTask.class.getName());
 
-    private OnTaskEnd<CallLogData> onTaskEnd;
-
-    private CallLogsManager callLogsManager;
+    private final OnTaskEnd<CallLogData> onTaskEnd;
 
     public ParseCallLogTask(OnTaskEnd<CallLogData> onTaskEnd) {
         this.onTaskEnd = onTaskEnd;
@@ -25,7 +23,7 @@ public class ParseCallLogTask extends AsyncTask<Context,CallLogData,CallLogData>
     @Override
     protected CallLogData doInBackground(Context ...context) {
 
-        callLogsManager = new CallLogsManager(context[0]);
+        CallLogsManager callLogsManager = new CallLogsManager(context[0]);
 
         List<ExcludedPhoneNumbers> excludedNumbers = callLogsManager.loadExcludedPhonesData();
 

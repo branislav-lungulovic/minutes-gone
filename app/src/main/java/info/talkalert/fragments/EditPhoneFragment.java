@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -69,16 +70,17 @@ public class EditPhoneFragment extends DialogFragment implements OnSaveTaskEnd{
         return new PersistenceServiceAsyncTask<>(((MainActivity)getActivity()).getPersistenceService(),this);
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder dialogFragment = new AlertDialog.Builder(getActivity());
         if (savedInstanceState == null){
             LayoutInflater inflater = getActivity().getLayoutInflater();
 
-            View rootView = inflater.inflate(R.layout.fragment_edit_phone, null);
+            View rootView = View.inflate(getContext(),R.layout.fragment_edit_phone, null);
             dialogFragment.setView(rootView);
 
-            View titleView = inflater.inflate(R.layout.dialog_title, null);
+            View titleView = View.inflate(getContext(),R.layout.dialog_title, null);
             TextView titleText = (TextView)titleView.findViewById(R.id.text_view_dialog_title);
             titleText.setText(mInEditMode ? getString(R.string.change_number) : getString(R.string.add_number));
             dialogFragment.setCustomTitle(titleView);
@@ -114,12 +116,12 @@ public class EditPhoneFragment extends DialogFragment implements OnSaveTaskEnd{
         AlertDialog d = (AlertDialog)getDialog();
 
         if (d != null){
-            Button negativeButton = (Button)d.getButton(Dialog.BUTTON_NEGATIVE);
+            Button negativeButton = d.getButton(Dialog.BUTTON_NEGATIVE);
             negativeButton.setFocusable(true);
             negativeButton.setFocusableInTouchMode(true);
             negativeButton.requestFocus();
 
-            Button positiveButton = (Button)d.getButton(Dialog.BUTTON_POSITIVE);
+            Button positiveButton = d.getButton(Dialog.BUTTON_POSITIVE);
             positiveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -145,18 +147,18 @@ public class EditPhoneFragment extends DialogFragment implements OnSaveTaskEnd{
 
     }
 
-    public void populateForm(ExcludedPhoneNumbers excludedPhoneNumbers){
+    private void populateForm(ExcludedPhoneNumbers excludedPhoneNumbers){
 
         nameEditText.setText(excludedPhoneNumbers.getName());
         phoneEditText.setText(excludedPhoneNumbers.getPhone());
     }
 
-    public void populateBean(){
+    private void populateBean(){
         excludedPhoneNumbers.setName(nameEditText.getText().toString());
         excludedPhoneNumbers.setPhone(phoneEditText.getText().toString());
     }
 
-    public void displayMessage(String message) {
+    private void displayMessage(String message) {
         Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 

@@ -27,7 +27,7 @@
         android:textSize="@dimen/text_size_huge"
         android:textColor="@color/primary_dark"
         android:text="@string/no_data_found"
-        android:fontFamily="sans-serif-condensed"/>
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

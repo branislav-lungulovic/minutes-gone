@@ -18,14 +18,14 @@ import static info.talkalert.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbD
 
 public class ExcludedPhoneNumbersPersistenceService implements PersistenceService<ExcludedPhoneNumbers> {
 
-    private static ExcludedPhoneNumbersPersistenceService instance = new ExcludedPhoneNumbersPersistenceService();
+    private static final ExcludedPhoneNumbersPersistenceService instance = new ExcludedPhoneNumbersPersistenceService();
 
     private static final String LOG_TAG = ExcludedPhoneNumbersPersistenceService.class.getName();
 
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase wDatabase;
 
-    public void init(Context context){
+    private void init(Context context){
         if(databaseHelper == null){
             databaseHelper = new DatabaseHelper(context);
             wDatabase = databaseHelper.getWritableDatabase();
@@ -67,7 +67,7 @@ public class ExcludedPhoneNumbersPersistenceService implements PersistenceServic
             String selection = COLUMN_ID + " = ?";
             String[] selectionArgs = { Integer.toString(entity.getId()) };
 
-            int count = wDatabase.update(
+            wDatabase.update(
                     TABLE_EXCLUDED_PHONE_NUMBERS,
                     values,
                     selection,
@@ -128,7 +128,7 @@ public class ExcludedPhoneNumbersPersistenceService implements PersistenceServic
         return ephones;
     }
 
-    protected ExcludedPhoneNumbersPersistenceService() {
+    private ExcludedPhoneNumbersPersistenceService() {
     }
 
     @Override

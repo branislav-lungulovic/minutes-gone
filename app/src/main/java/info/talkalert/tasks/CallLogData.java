@@ -4,8 +4,6 @@ package info.talkalert.tasks;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
-import java.util.Date;
-
 public class CallLogData {
 
 
@@ -15,6 +13,8 @@ public class CallLogData {
     private Integer excludedDuration;
     private LocalDate dateFrom;
     private LocalDateTime dateTo;
+
+    private boolean permissionError=false;
 
     public CallLogData() {
     }
@@ -26,6 +26,10 @@ public class CallLogData {
         this.excludedDuration = excludedDuration;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
+    }
+
+    public CallLogData(boolean permissionError) {
+        this.permissionError = permissionError;
     }
 
     public Integer getPlanaLimit() {
@@ -74,6 +78,14 @@ public class CallLogData {
 
     public void setDateTo(LocalDateTime dateTo) {
         this.dateTo = dateTo;
+    }
+
+    public boolean isPermissionError() {
+        return permissionError;
+    }
+
+    public void setPermissionError(boolean permissionError) {
+        this.permissionError = permissionError;
     }
 
     @Override

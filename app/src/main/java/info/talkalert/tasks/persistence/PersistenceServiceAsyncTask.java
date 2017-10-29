@@ -9,7 +9,7 @@ import info.talkalert.data.PersistenceService;
 
 public class PersistenceServiceAsyncTask<T> extends AsyncTask<PersistenceServiceAsyncTask.CrudData,PersistenceServiceAsyncTask.CrudData,PersistenceServiceAsyncTask.CrudData> {
 
-    private PersistenceService<T> persistanceService;
+    private final PersistenceService<T> persistanceService;
 
     private OnCreateTaskEnd onCreateTaskEndHandler;
     private OnGetAllTaskEnd onGetAllTaskEndHandler;
@@ -108,7 +108,7 @@ public class PersistenceServiceAsyncTask<T> extends AsyncTask<PersistenceService
 
     protected class CrudData{
 
-        public OPERATION_TYPE operationType;
+        public final OPERATION_TYPE operationType;
         public T inData;
         public List<T> inDataAsList=new ArrayList<>();
         public List<T> result = new ArrayList<>();
