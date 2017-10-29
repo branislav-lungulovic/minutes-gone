@@ -148,7 +148,7 @@ public class CallLogsManager {
 
         logger.d("Phone device country code: ", pnu.getCountryCodeForRegion(countryCode));
 
-        if (!preferences.countLocalCalls()) return true;
+        if (!preferences.isCountLocalCalls()) return true;
 
         Phonenumber.PhoneNumber pn;
         try {

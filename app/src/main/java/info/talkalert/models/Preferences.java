@@ -15,13 +15,15 @@ public class Preferences {
 
     private LocalDate lastNotificationSentDate;
 
-    public Preferences(int day, int minutes, int alertLevel, boolean countLocalCalls, LocalDate lastNotificationSentDate) {
+    private boolean showNotificationInStatusBar;
+
+    public Preferences(int day, int minutes, int alertLevel, boolean countLocalCalls, LocalDate lastNotificationSentDate, boolean showNotificationInStatusBar) {
         this.day = day;
         this.minutes = minutes;
         this.alertLevel = alertLevel;
         this.countLocalCalls = countLocalCalls;
-        this.lastNotificationSentDate=lastNotificationSentDate;
-
+        this.lastNotificationSentDate = lastNotificationSentDate;
+        this.showNotificationInStatusBar = showNotificationInStatusBar;
     }
 
     public int getDay() {
@@ -48,7 +50,7 @@ public class Preferences {
         this.alertLevel = alertLevel;
     }
 
-    public boolean countLocalCalls() {
+    public boolean isCountLocalCalls() {
         return countLocalCalls;
     }
 
@@ -62,5 +64,13 @@ public class Preferences {
 
     public void setLastNotificationSentDate(LocalDate lastNotificationSentDate) {
         this.lastNotificationSentDate = lastNotificationSentDate;
+    }
+
+    public boolean isShowNotificationInStatusBar() {
+        return showNotificationInStatusBar;
+    }
+
+    public void setShowNotificationInStatusBar(boolean showNotificationInStatusBar) {
+        this.showNotificationInStatusBar = showNotificationInStatusBar;
     }
 }

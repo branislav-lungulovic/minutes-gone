@@ -52,4 +52,5 @@
     <string name="version">Верзија:</string>
     <string name="author_name_label">Име:</string>
     <string name="application_logo">Лого апликације</string>
+    <string name="show_ststus_in_status_bar">Прикажи тренутни проценат потрошених минута у статус бару.</string>
 </resources>

@@ -79,7 +79,7 @@ public class CallEndReceiver extends BroadcastReceiver implements OnTaskEnd<Call
         builder.setContentIntent(contentIntent)
                 .setSmallIcon(R.drawable.ic_warning_black_24dp)
                 .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_warning_black_24dp))
-                .setContentTitle("Plan limit monitor")
+                .setContentTitle(context.getString(R.string.app_name))
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(message))
                 .setContentText(message)

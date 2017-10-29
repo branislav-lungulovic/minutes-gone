@@ -26,15 +26,16 @@ public class EditSettingsFragment extends Fragment {
     private EditText edMinutes;
     private EditText edAlertLevel;
     private SwitchCompat swCountLocalCalls;
+    private SwitchCompat showNotificationInStatusBar;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_edit_settings, container, false);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.action_settings));
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.action_settings));
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             final Button btnCancel = (Button) view.findViewById(R.id.btnCancel);
             btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -50,13 +51,15 @@ public class EditSettingsFragment extends Fragment {
             edMinutes = (EditText) view.findViewById(R.id.edMinutes);
             edAlertLevel = (EditText) view.findViewById(R.id.edAlertLevel);
             swCountLocalCalls = (SwitchCompat) view.findViewById(R.id.swCountLocalCalls);
+            showNotificationInStatusBar = (SwitchCompat) view.findViewById(R.id.showNotificationInStatusBar);
 
             Preferences preferences = ActivityUtils.readPreferences(getActivity());
 
             edDay.setText(Integer.toString(preferences.getDay()));
             edMinutes.setText(Integer.toString(preferences.getMinutes()));
             edAlertLevel.setText(Integer.toString(preferences.getAlertLevel()));
-            swCountLocalCalls.setChecked(preferences.countLocalCalls());
+            swCountLocalCalls.setChecked(preferences.isCountLocalCalls());
+            showNotificationInStatusBar.setChecked(preferences.isShowNotificationInStatusBar());
 
             final Button btnSave = (Button) view.findViewById(R.id.btnSave);
             btnSave.setOnClickListener(new View.OnClickListener() {
@@ -74,30 +77,36 @@ public class EditSettingsFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        ActivityUtils.handleStatusBarNotification(getContext(), showNotificationInStatusBar.isChecked());
+
+
+    }
+
     private boolean validateInputs() {
 
-        if (edDay.getText().toString().isEmpty())
-        {
+        if (edDay.getText().toString().isEmpty()) {
             edDay.setError(getString(R.string.dayInMonth_required));
             edDay.requestFocus();
             return false;
         }
 
-        if (edMinutes.getText().toString().isEmpty())
-        {
+        if (edMinutes.getText().toString().isEmpty()) {
             edMinutes.setError(getString(R.string.minutes_required));
             edMinutes.requestFocus();
             return false;
         }
 
-        if (edAlertLevel.getText().toString().isEmpty())
-        {
+        if (edAlertLevel.getText().toString().isEmpty()) {
             edAlertLevel.setError(getString(R.string.alert_level_perc_error));
             edAlertLevel.requestFocus();
             return false;
-        }else{
+        } else {
             int aValue = Integer.parseInt(edAlertLevel.getText().toString());
-            if(!(0 <= aValue && aValue<= 100)){
+            if (!(0 <= aValue && aValue <= 100)) {
                 edAlertLevel.setError(getString(R.string.alert_level_perc_error));
                 edAlertLevel.requestFocus();
                 return false;
@@ -110,9 +119,11 @@ public class EditSettingsFragment extends Fragment {
 
     private void saveSettings() {
 
-       if(!validateInputs())return;
+        if (!validateInputs()) return;
 
-        ActivityUtils.saveSettings(getActivity(),Integer.parseInt(edDay.getText().toString()),Integer.parseInt(edMinutes.getText().toString()),Integer.parseInt(edAlertLevel.getText().toString()),swCountLocalCalls.isChecked());
+        ActivityUtils.saveSettings(getActivity(), Integer.parseInt(edDay.getText().toString()), Integer.parseInt(edMinutes.getText().toString()), Integer.parseInt(edAlertLevel.getText().toString()), swCountLocalCalls.isChecked(), showNotificationInStatusBar.isChecked());
+
+        ActivityUtils.handleStatusBarNotification(getContext(), showNotificationInStatusBar.isChecked());
 
         Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
 

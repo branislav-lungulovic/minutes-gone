@@ -76,14 +76,27 @@
             android:textStyle="italic" />
 
         <android.support.v7.widget.SwitchCompat
-            android:id="@+id/swCountLocalCalls"
+        android:id="@+id/swCountLocalCalls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/alertLevelNotice"
+        android:background="@android:color/transparent"
+        android:button="@null"
+        android:padding="20dp"
+        android:text="@string/count_only_local_calls"
+        android:textColor="@color/secondary_text"
+        android:textOff=""
+        android:textOn="" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/showNotificationInStatusBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/alertLevelNotice"
+            android:layout_below="@id/swCountLocalCalls"
             android:background="@android:color/transparent"
             android:button="@null"
             android:padding="20dp"
-            android:text="@string/count_only_local_calls"
+            android:text="@string/show_ststus_in_status_bar"
             android:textColor="@color/secondary_text"
             android:textOff=""
             android:textOn="" />
@@ -93,7 +106,7 @@
             android:id="@+id/btnSave"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/swCountLocalCalls"
+            android:layout_below="@+id/showNotificationInStatusBar"
             android:layout_alignParentRight="true"
             android:layout_alignRight="@+id/tedFrom"
             android:text="@string/save" />
@@ -102,7 +115,7 @@
             android:id="@+id/btnCancel"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/swCountLocalCalls"
+            android:layout_below="@+id/showNotificationInStatusBar"
             android:layout_toLeftOf="@id/btnSave"
             android:text="@string/cancel" />
 
