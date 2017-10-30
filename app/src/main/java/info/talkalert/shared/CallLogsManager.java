@@ -126,7 +126,7 @@ public class CallLogsManager {
 
         }
 
-        durationSum = 56*60;
+        //durationSum = 56*60;
         durationSumInMinutes = Math.round(durationSum / 60);
         excludedDurationSum += notDomesticSum;
 
