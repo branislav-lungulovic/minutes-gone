@@ -80,8 +80,7 @@ public class EditSettingsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
-        ActivityUtils.handleStatusBarNotification(getContext(), showNotificationInStatusBar.isChecked());
+        ActivityUtils.handleStatusBarNotification(getContext());
 
 
     }
@@ -123,7 +122,7 @@ public class EditSettingsFragment extends Fragment {
 
         ActivityUtils.saveSettings(getActivity(), Integer.parseInt(edDay.getText().toString()), Integer.parseInt(edMinutes.getText().toString()), Integer.parseInt(edAlertLevel.getText().toString()), swCountLocalCalls.isChecked(), showNotificationInStatusBar.isChecked());
 
-        ActivityUtils.handleStatusBarNotification(getContext(), showNotificationInStatusBar.isChecked());
+        ActivityUtils.handleStatusBarNotification(getContext());
 
         Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
 

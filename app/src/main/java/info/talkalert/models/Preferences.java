@@ -15,6 +15,8 @@ public class Preferences {
 
     private LocalDate lastNotificationSentDate;
 
+    private int lastCalculatedPercent;
+
     private boolean showNotificationInStatusBar;
 
     public Preferences(int day, int minutes, int alertLevel, boolean countLocalCalls, LocalDate lastNotificationSentDate, boolean showNotificationInStatusBar) {
@@ -72,5 +74,13 @@ public class Preferences {
 
     public void setShowNotificationInStatusBar(boolean showNotificationInStatusBar) {
         this.showNotificationInStatusBar = showNotificationInStatusBar;
+    }
+
+    public int getLastCalculatedPercent() {
+        return lastCalculatedPercent;
+    }
+
+    public void setLastCalculatedPercent(int lastCalculatedPercent) {
+        this.lastCalculatedPercent = lastCalculatedPercent;
     }
 }

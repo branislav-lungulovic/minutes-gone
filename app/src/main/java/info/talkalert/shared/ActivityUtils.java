@@ -7,12 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.telephony.TelephonyManager;
@@ -31,6 +26,8 @@ public class ActivityUtils {
     public static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 2;
 
     public static final int STATUS_BAR_NOTIFICATION_ID = 1;
+
+    private static int baseStatusBarImage = R.drawable.si000;
 
     public static Preferences readPreferences(Context context){
 
@@ -65,8 +62,14 @@ public class ActivityUtils {
 
     public static int readIntPreference(Context context, String keyName){
 
+        return readIntPreference(context,keyName,-1);
+
+    }
+
+    public static int readIntPreference(Context context, String keyName, int defaultValue){
+
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPref.getInt(keyName, -1);
+        return sharedPref.getInt(keyName, defaultValue);
 
     }
 
@@ -76,6 +79,17 @@ public class ActivityUtils {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(keyName, value);
+        editor.apply();
+
+
+    }
+
+    public static void saveIntPreference(Context context, int value, String keyName) {
+
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(keyName, value);
         editor.apply();
 
 
@@ -116,7 +130,10 @@ public class ActivityUtils {
 
     }
 
-    public static void sendStatusBarNotification(Context context,String message){
+    public static void sendPermanentStatusBarNotification(Context context){
+
+        int percentVal = ActivityUtils.readIntPreference(context,context.getString(R.string.key_lastCalculatedPercent,0));
+        String message = String.format(context.getResources().getString(R.string.quota_alert),percentVal+"%");
 
         Intent notificationIntent = new Intent(context, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(context,
@@ -127,9 +144,10 @@ public class ActivityUtils {
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
         Resources res = context.getResources();
+        int smallIcon = calcIcon(context,percentVal);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setContentIntent(contentIntent)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(baseStatusBarImage)
                 .setLargeIcon(BitmapFactory.decodeResource(res, R.mipmap.hg_transp))
                 .setContentTitle(context.getString(R.string.app_name))
                 .setStyle(new NotificationCompat.BigTextStyle()
@@ -137,15 +155,21 @@ public class ActivityUtils {
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setOngoing(true)
-                .setProgress(100,33,false)
+
         ;
+        if(smallIcon != 0)builder.setSmallIcon(smallIcon);
         nm.notify(STATUS_BAR_NOTIFICATION_ID, builder.build());
 
-        ActivityUtils.saveStringPreference(context,new LocalDate().toString(),context.getString(R.string.key_lastNotificationSentDate));
 
     }
 
-    public static void cancelStatusBarNotification(Context context){
+    private static int calcIcon(Context context, int percent){
+        int newIcon = baseStatusBarImage + percent;
+        int checkExistence = context.getResources().getIdentifier(String.valueOf(newIcon), "drawable", context.getPackageName());
+        return checkExistence;
+    }
+
+    public static void cancelPermanentStatusBarNotification(Context context){
 
 
 
@@ -158,11 +182,12 @@ public class ActivityUtils {
 
     }
 
-    public static void handleStatusBarNotification(Context context,boolean isChecked){
-        if(isChecked){
-            ActivityUtils.sendStatusBarNotification(context,"Message message");
+    public static void handleStatusBarNotification(Context context){
+        Preferences pref = ActivityUtils.readPreferences(context);
+        if(pref.isShowNotificationInStatusBar()){
+            ActivityUtils.sendPermanentStatusBarNotification(context);
         }else{
-            ActivityUtils.cancelStatusBarNotification(context);
+            ActivityUtils.cancelPermanentStatusBarNotification(context);
         }
     }
 

@@ -22,9 +22,13 @@ public class AboutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
 
         TextView txtIconAuthorCredit = (TextView) view.findViewById(R.id.txtIconAuthorCredit);
+        TextView txtIconCredit = (TextView) view.findViewById(R.id.txtIconCredit);
 
         ActivityUtils.setHtmlText(txtIconAuthorCredit,getString(R.string.about_credit_text));
         Linkify.addLinks(txtIconAuthorCredit, Linkify.WEB_URLS);
+
+        ActivityUtils.setHtmlText(txtIconCredit,getString(R.string.about_credit_icons));
+        Linkify.addLinks(txtIconCredit, Linkify.WEB_URLS);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getString(R.string.about));
 

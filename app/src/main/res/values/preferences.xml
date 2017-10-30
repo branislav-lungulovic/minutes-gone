@@ -13,6 +13,7 @@
     <string name="key_alert_level" translatable="false">alert_level</string>
     <string name="key_count_local_calls" translatable="false">count_local_calls</string>
     <string name="key_showNotificationInStatusBar" translatable="false">showNotificationInStatusBar</string>
-    <string name="key_dialing_code" translatable="false"></string>
-    <string name="key_lastNotificationSentDate" translatable="false"></string>
+    <string name="key_dialing_code" translatable="false">key_dialing_code</string>
+    <string name="key_lastNotificationSentDate" translatable="false">key_lastNotificationSentDate</string>
+    <string name="key_lastCalculatedPercent" translatable="false">key_lastCalculatedPercent</string>
 </resources>

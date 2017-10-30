@@ -57,6 +57,8 @@ public class CallEndReceiver extends BroadcastReceiver implements OnTaskEnd<Call
             sendNotification(String.format(context.getResources().getString(R.string.quota_alert),logData.getPlanaLimitPercent()+"%"));
         }
 
+        ActivityUtils.handleStatusBarNotification(context);
+
         pendingResult.finish();
     }
 
