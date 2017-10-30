@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="LinearLayoutManager"
-        tools:context="info.talkalert.fragments.ExcludedPhoneNumberFragment"
+        tools:context="info.minutesgone.fragments.ExcludedPhoneNumberFragment"
         tools:listitem="@layout/fragment_excludedphonenumber" />
 
     <TextView
