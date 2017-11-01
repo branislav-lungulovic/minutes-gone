@@ -21,7 +21,6 @@ import info.minutesgone.adapters.AutoCompleteContacts;
 import info.minutesgone.tasks.persistence.PersistenceServiceAsyncTask;
 import info.minutesgone.models.ExcludedPhoneNumbers;
 import info.minutesgone.shared.Logger;
-import info.minutesgone.shared.LoggerUtils;
 import info.minutesgone.tasks.persistence.OnSaveTaskEnd;
 
 
@@ -30,7 +29,7 @@ import info.minutesgone.tasks.persistence.OnSaveTaskEnd;
  */
 public class EditPhoneFragment extends DialogFragment implements OnSaveTaskEnd{
 
-    private static Logger logger = LoggerUtils.getLogger(EditPhoneFragment.class.getName());
+    private static Logger logger = Logger.getLogger(EditPhoneFragment.class.getName());
 
     private final String LOG_TAG = getClass().getName();
 

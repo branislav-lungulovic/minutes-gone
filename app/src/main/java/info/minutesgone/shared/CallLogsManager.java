@@ -28,7 +28,7 @@ import info.minutesgone.tasks.ParseCallLogTask;
 
 public class CallLogsManager {
 
-    private static final Logger logger = LoggerUtils.getLogger(ParseCallLogTask.class.getName());
+    private static final Logger logger = Logger.getLogger(ParseCallLogTask.class.getName());
 
     private final PersistenceService<ExcludedPhoneNumbers> persistanceService;
 

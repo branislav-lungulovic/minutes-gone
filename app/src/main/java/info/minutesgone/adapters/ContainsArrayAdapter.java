@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.minutesgone.shared.Logger;
-import info.minutesgone.shared.LoggerUtils;
 
 class ContainsArrayAdapter extends ArrayAdapter<String> implements Filterable {
 
@@ -20,7 +19,7 @@ class ContainsArrayAdapter extends ArrayAdapter<String> implements Filterable {
     private ArrayList<String> mOriginalValues;
     private ArrayFilter mFilter;
 
-    private static final Logger logger = LoggerUtils.getLogger(ContainsArrayAdapter.class.getName());
+    private static final Logger logger = Logger.getLogger(ContainsArrayAdapter.class.getName());
 
     public ContainsArrayAdapter(Context context, int resource, List<String> objects) {
 

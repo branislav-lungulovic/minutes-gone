@@ -8,11 +8,10 @@ import java.util.List;
 import info.minutesgone.models.ExcludedPhoneNumbers;
 import info.minutesgone.shared.CallLogsManager;
 import info.minutesgone.shared.Logger;
-import info.minutesgone.shared.LoggerUtils;
 
 public class ParseCallLogTask extends AsyncTask<Context,CallLogData,CallLogData> {
 
-    private static Logger logger = LoggerUtils.getLogger(ParseCallLogTask.class.getName());
+    private static Logger logger = Logger.getLogger(ParseCallLogTask.class.getName());
 
     private final OnTaskEnd<CallLogData> onTaskEnd;
 

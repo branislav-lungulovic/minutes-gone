@@ -12,15 +12,19 @@ import java.util.List;
 
 import info.minutesgone.data.PersistenceService;
 import info.minutesgone.models.ExcludedPhoneNumbers;
+import info.minutesgone.shared.Logger;
 
-import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.*;
+import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.COLUMN_ID;
+import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.COLUMN_NAME;
+import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.COLUMN_PHONE;
+import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.TABLE_EXCLUDED_PHONE_NUMBERS;
 
 
 public class ExcludedPhoneNumbersPersistenceService implements PersistenceService<ExcludedPhoneNumbers> {
 
     private static final ExcludedPhoneNumbersPersistenceService instance = new ExcludedPhoneNumbersPersistenceService();
 
-    private static final String LOG_TAG = ExcludedPhoneNumbersPersistenceService.class.getName();
+    private static Logger logger = Logger.getLogger(ExcludedPhoneNumbersPersistenceService.class.getName());
 
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase wDatabase;
@@ -47,10 +51,10 @@ public class ExcludedPhoneNumbersPersistenceService implements PersistenceServic
             values.put(COLUMN_PHONE, entity.getPhone());
             try {
                 wDatabase.insertOrThrow(TABLE_EXCLUDED_PHONE_NUMBERS, null, values);
-                Log.d(LOG_TAG, "Phone Number Added");
+                logger.d("Phone Number Added");
 
             } catch (SQLException e) {
-                Log.d(LOG_TAG, "Error " + e.getCause() + " " + e.getMessage());
+                logger.d("Error " + e.getCause() + " " + e.getMessage());
             }
         }
     }
@@ -97,7 +101,7 @@ public class ExcludedPhoneNumbersPersistenceService implements PersistenceServic
     @Override
     public List<ExcludedPhoneNumbers> getAll() {
 
-        Log.d(LOG_TAG,"Entered getAll");
+        logger.d("Entered getAll");
 
         //initialize an empty list of customers
         List<ExcludedPhoneNumbers> ephones = new ArrayList<>();

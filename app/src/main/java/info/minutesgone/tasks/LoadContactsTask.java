@@ -6,11 +6,10 @@ import android.os.AsyncTask;
 import android.provider.ContactsContract;
 
 import info.minutesgone.shared.Logger;
-import info.minutesgone.shared.LoggerUtils;
 
 public class LoadContactsTask extends AsyncTask<Activity,LoadedContactsData,LoadedContactsData> {
 
-    private static final Logger logger = LoggerUtils.getLogger(LoadContactsTask.class.getName());
+    private static final Logger logger = Logger.getLogger(LoadContactsTask.class.getName());
 
     private final OnTaskEnd<LoadedContactsData> onTaskEnd;
 

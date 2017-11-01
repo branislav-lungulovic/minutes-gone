@@ -12,13 +12,15 @@
     <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
 
     <application
+        android:name=".MinutesgoneApp"
         android:allowBackup="true"
         android:icon="@mipmap/hg_transp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/hg_transp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:fullBackupContent="@xml/backup_descriptor"
+        >
         <activity
             android:name="info.minutesgone.activities.MainActivity"
             android:label="@string/app_name"

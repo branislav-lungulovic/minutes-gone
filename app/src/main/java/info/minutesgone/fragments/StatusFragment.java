@@ -26,7 +26,6 @@ import info.minutesgone.R;
 import info.minutesgone.shared.ActivityUtils;
 import info.minutesgone.shared.ColorUtils;
 import info.minutesgone.shared.Logger;
-import info.minutesgone.shared.LoggerUtils;
 import info.minutesgone.shared.StringUtils;
 import info.minutesgone.tasks.CallLogData;
 import info.minutesgone.tasks.OnTaskEnd;
@@ -53,7 +52,7 @@ public class StatusFragment extends Fragment implements OnTaskEnd<CallLogData> {
 
     private static boolean firstStart =true;
 
-    private static final Logger logger = LoggerUtils.getLogger(StatusFragment.class.getName());
+    private static final Logger logger = Logger.getLogger(StatusFragment.class.getName());
 
     private static final int URL_LOADER = 1;
 

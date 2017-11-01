@@ -6,17 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import info.minutesgone.R;
 import info.minutesgone.shared.ActivityUtils;
 import info.minutesgone.shared.Logger;
-import info.minutesgone.shared.LoggerUtils;
 import info.minutesgone.tasks.CallLogData;
 import info.minutesgone.tasks.OnTaskEnd;
 import info.minutesgone.tasks.ParseCallLogTask;
 
 public class OutgoingCallStartReceiver extends BroadcastReceiver implements OnTaskEnd<CallLogData>{
 
-    private static Logger logger = LoggerUtils.getLogger(OutgoingCallStartReceiver.class.getName());
+    private static Logger logger = Logger.getLogger(OutgoingCallStartReceiver.class.getName());
 
     private static final String TAG = "MyBroadcastReceiver";
     private PendingResult pendingResult;

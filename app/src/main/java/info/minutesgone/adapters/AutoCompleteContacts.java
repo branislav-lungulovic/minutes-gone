@@ -12,7 +12,6 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 import info.minutesgone.shared.Logger;
-import info.minutesgone.shared.LoggerUtils;
 import info.minutesgone.tasks.LoadContactsTask;
 import info.minutesgone.tasks.LoadedContactsData;
 import info.minutesgone.tasks.OnTaskEnd;
@@ -21,7 +20,7 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class AutoCompleteContacts implements AdapterView.OnItemClickListener, OnTaskEnd<LoadedContactsData> {
 
-    private static final Logger logger = LoggerUtils.getLogger(AutoCompleteContacts.class.getName());
+    private static final Logger logger = Logger.getLogger(AutoCompleteContacts.class.getName());
 
     private EditText phoneEditText;
     private EditText contactNameEditText;

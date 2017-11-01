@@ -6,10 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import info.minutesgone.shared.Logger;
+import info.minutesgone.tasks.ParseCallLogTask;
+
 import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.*;
 
 class DatabaseHelper extends SQLiteOpenHelper {
-    private final static String LOG_TAG = DatabaseHelper.class.getSimpleName();
+    private static Logger logger = Logger.getLogger(DatabaseHelper.class.getSimpleName());
     private final static int DATABASE_VERSION= 1;
     private static final String DATABASE_NAME = "talkalert.db";
 
@@ -23,14 +26,14 @@ class DatabaseHelper extends SQLiteOpenHelper {
         try {
             db.execSQL(CREATE_TABLE_EXCLUDED_PHONE_NUMBERS);
         } catch (SQLException e) {
-            Log.d(LOG_TAG, " Error create database " + e.getMessage());
+            logger.d(" Error create database " + e.getMessage());
         }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (newVersion != oldVersion){
-            Log.d(LOG_TAG, " onUpgrade executed ");
+            logger.d(" onUpgrade executed ");
         }
 
     }
