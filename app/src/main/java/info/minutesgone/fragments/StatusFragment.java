@@ -223,10 +223,7 @@ public class StatusFragment extends Fragment implements OnTaskEnd<CallLogData> {
             if(data.getPlanaLimitPercent() > 0)animateData(data.getPlanaLimitPercent());
         }
 
-        ActivityUtils.saveIntPreference(getContext(),data.getPlanaLimitPercent(),getContext().getString(R.string.key_lastCalculatedPercent));
-
-        ActivityUtils.handleStatusBarNotification(getContext());
-
+        ActivityUtils.checkIfToSendAlert(getContext(),data.getPlanaLimitPercent());
 
 
     }

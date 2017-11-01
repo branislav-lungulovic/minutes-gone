@@ -15,12 +15,15 @@ import android.widget.Toast;
 import info.minutesgone.R;
 import info.minutesgone.models.Preferences;
 import info.minutesgone.shared.ActivityUtils;
+import info.minutesgone.tasks.CallLogData;
+import info.minutesgone.tasks.OnTaskEnd;
+import info.minutesgone.tasks.ParseCallLogTask;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EditSettingsFragment extends Fragment {
+public class EditSettingsFragment extends Fragment implements OnTaskEnd<CallLogData> {
 
     private EditText edDay;
     private EditText edMinutes;
@@ -80,7 +83,7 @@ public class EditSettingsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        ActivityUtils.handleStatusBarNotification(getContext());
+        ActivityUtils.handleSendStatusBarNotification(getContext());
 
 
     }
@@ -122,9 +125,25 @@ public class EditSettingsFragment extends Fragment {
 
         ActivityUtils.saveSettings(getActivity(), Integer.parseInt(edDay.getText().toString()), Integer.parseInt(edMinutes.getText().toString()), Integer.parseInt(edAlertLevel.getText().toString()), swCountLocalCalls.isChecked(), showNotificationInStatusBar.isChecked());
 
-        ActivityUtils.handleStatusBarNotification(getContext());
+        new ParseCallLogTask(this).execute(getActivity());
 
-        Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    @Override
+    public void onTaskEnd(CallLogData data) {
+        if(isAdded()){
+
+            if(data.isPermissionError()){
+                Toast.makeText(getContext(), "Please enable call logs read access.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            ActivityUtils.checkIfToSendAlert(getContext(),data.getPlanaLimitPercent());
+
+            Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
+        }
 
     }
 

@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="info.minutesgone.broadcastreceivers.CallEndReceiver"  android:exported="true">
+        <receiver android:name="info.minutesgone.broadcastreceivers.OutgoingCallStartReceiver"  android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>

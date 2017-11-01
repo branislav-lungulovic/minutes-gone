@@ -50,7 +50,9 @@ public class ActivityUtils {
         String lastNotificationSentDateStr = sharedPref.getString(context.getString(R.string.key_lastNotificationSentDate), "");
         LocalDate lastNotificationSentDate = (lastNotificationSentDateStr.isEmpty())?null:new LocalDate(lastNotificationSentDateStr);
 
-        return new Preferences(day,minutes,alertLevel,countLocalCalls,lastNotificationSentDate,showNotificationInStatusBar);
+        int planLimitPercent = sharedPref.getInt(context.getString(R.string.key_lastCalculatedPercent), 0);
+
+        return new Preferences(day,minutes,alertLevel,countLocalCalls,lastNotificationSentDate,showNotificationInStatusBar,planLimitPercent);
     }
 
     public static String readStringPreference(Context context, String keyName){
@@ -133,7 +135,7 @@ public class ActivityUtils {
     public static void sendPermanentStatusBarNotification(Context context){
 
         int percentVal = ActivityUtils.readIntPreference(context,context.getString(R.string.key_lastCalculatedPercent,0));
-        String message = String.format(context.getResources().getString(R.string.quota_alert),percentVal+"%");
+        String message = String.format(context.getResources().getString(R.string.quota_notification),percentVal+"%");
 
         Intent notificationIntent = new Intent(context, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(context,
@@ -182,7 +184,7 @@ public class ActivityUtils {
 
     }
 
-    public static void handleStatusBarNotification(Context context){
+    public static void handleSendStatusBarNotification(Context context){
         Preferences pref = ActivityUtils.readPreferences(context);
         if(pref.isShowNotificationInStatusBar()){
             ActivityUtils.sendPermanentStatusBarNotification(context);
@@ -191,6 +193,48 @@ public class ActivityUtils {
         }
     }
 
+    public static void sendAlertNotification(Context context,String message){
+
+        Intent notificationIntent = new Intent(context, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(context,
+                0, notificationIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+
+        NotificationManager nm = (NotificationManager) context
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Resources res = context.getResources();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+        builder.setContentIntent(contentIntent)
+                .setSmallIcon(R.drawable.ic_warning_black_24dp)
+                .setLargeIcon(BitmapFactory.decodeResource(res, R.drawable.ic_warning_black_24dp))
+                .setContentTitle(context.getString(R.string.app_name))
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(message))
+                .setContentText(message)
+                .setAutoCancel(true);
+        nm.notify(0, builder.build());
+
+        saveStringPreference(context,new LocalDate().toString(),context.getString(R.string.key_lastNotificationSentDate));
+
+    }
+
+    public static void checkIfToSendAlert(Context context, int planLimitPercent){
+
+        saveIntPreference(context,planLimitPercent,context.getString(R.string.key_lastCalculatedPercent));
+
+        Preferences preferences = readPreferences(context);
+
+        if(preferences.getAlertLevel() > 0 && preferences.getAlertLevel() <= preferences.getLastCalculatedPercent() && notificationCanBeSend(preferences)){
+            sendAlertNotification(context,String.format(context.getResources().getString(R.string.quota_alert),preferences.getLastCalculatedPercent()+"%"));
+        }
+
+        handleSendStatusBarNotification(context);
+    }
+
+    private static boolean notificationCanBeSend(Preferences preferences) {
+        return !(preferences.getLastNotificationSentDate() != null && preferences.getLastNotificationSentDate().getMonthOfYear() == new LocalDate().getMonthOfYear());
+    }
 
 
 }

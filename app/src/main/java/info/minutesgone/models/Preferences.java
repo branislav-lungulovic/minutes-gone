@@ -15,17 +15,18 @@ public class Preferences {
 
     private LocalDate lastNotificationSentDate;
 
-    private int lastCalculatedPercent;
-
     private boolean showNotificationInStatusBar;
 
-    public Preferences(int day, int minutes, int alertLevel, boolean countLocalCalls, LocalDate lastNotificationSentDate, boolean showNotificationInStatusBar) {
+    private int lastCalculatedPercent;
+
+    public Preferences(int day, int minutes, int alertLevel, boolean countLocalCalls, LocalDate lastNotificationSentDate, boolean showNotificationInStatusBar, int lastCalculatedPercent) {
         this.day = day;
         this.minutes = minutes;
         this.alertLevel = alertLevel;
         this.countLocalCalls = countLocalCalls;
         this.lastNotificationSentDate = lastNotificationSentDate;
         this.showNotificationInStatusBar = showNotificationInStatusBar;
+        this.lastCalculatedPercent = lastCalculatedPercent;
     }
 
     public int getDay() {

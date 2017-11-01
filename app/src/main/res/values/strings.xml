@@ -51,6 +51,7 @@
     <string name="item_deleted">item deleted.</string>
 
     <string name="quota_alert">You have reached %1$s of your monthly quota for allowed number of minutes.</string>
+    <string name="quota_notification">%1$s of your monthly quota spent.</string>
     <string name="count_only_local_calls">Include only domestic calls in plan</string>
     <string name="show_ststus_in_status_bar">Show current spent minute percent in status bar</string>
     <string name="plan_counter">minutes gone</string>
