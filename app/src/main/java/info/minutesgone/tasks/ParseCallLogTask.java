@@ -7,7 +7,7 @@ import java.util.List;
 
 import info.minutesgone.models.ExcludedPhoneNumbers;
 import info.minutesgone.shared.CallLogsManager;
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 
 public class ParseCallLogTask extends AsyncTask<Context,CallLogData,CallLogData> {
 

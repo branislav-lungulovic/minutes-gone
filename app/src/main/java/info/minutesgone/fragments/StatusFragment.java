@@ -25,7 +25,7 @@ import org.joda.time.format.DateTimeFormat;
 import info.minutesgone.R;
 import info.minutesgone.shared.ActivityUtils;
 import info.minutesgone.shared.ColorUtils;
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 import info.minutesgone.shared.StringUtils;
 import info.minutesgone.tasks.CallLogData;
 import info.minutesgone.tasks.OnTaskEnd;

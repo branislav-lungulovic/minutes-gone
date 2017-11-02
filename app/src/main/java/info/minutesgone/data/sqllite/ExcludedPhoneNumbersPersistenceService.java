@@ -12,7 +12,7 @@ import java.util.List;
 
 import info.minutesgone.data.PersistenceService;
 import info.minutesgone.models.ExcludedPhoneNumbers;
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 
 import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.COLUMN_ID;
 import static info.minutesgone.models.ExcludedPhoneNumbers.ExcludedPhoneNumbersDbDef.COLUMN_NAME;

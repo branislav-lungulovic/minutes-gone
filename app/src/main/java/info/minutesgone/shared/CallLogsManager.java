@@ -25,6 +25,7 @@ import info.minutesgone.models.ExcludedPhoneNumbers;
 import info.minutesgone.models.Preferences;
 import info.minutesgone.tasks.CallLogData;
 import info.minutesgone.tasks.ParseCallLogTask;
+import info.androidminiloggr.Logger;
 
 public class CallLogsManager {
 

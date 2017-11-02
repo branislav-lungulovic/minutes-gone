@@ -20,7 +20,7 @@ import info.minutesgone.activities.MainActivity;
 import info.minutesgone.adapters.AutoCompleteContacts;
 import info.minutesgone.tasks.persistence.PersistenceServiceAsyncTask;
 import info.minutesgone.models.ExcludedPhoneNumbers;
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 import info.minutesgone.tasks.persistence.OnSaveTaskEnd;
 
 

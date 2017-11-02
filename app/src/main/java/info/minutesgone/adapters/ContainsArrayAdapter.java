@@ -11,7 +11,7 @@ import android.widget.Filterable;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 
 class ContainsArrayAdapter extends ArrayAdapter<String> implements Filterable {
 

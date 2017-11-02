@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import info.minutesgone.shared.ActivityUtils;
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 import info.minutesgone.tasks.CallLogData;
 import info.minutesgone.tasks.OnTaskEnd;
 import info.minutesgone.tasks.ParseCallLogTask;

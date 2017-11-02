@@ -2,7 +2,7 @@ package info.minutesgone;
 
 import android.app.Application;
 
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 
 
 public class MinutesgoneApp extends Application {
@@ -10,6 +10,6 @@ public class MinutesgoneApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Logger.init(getApplicationContext());
+        //Logger.init(BuildConfig.DEBUG);
     }
 }

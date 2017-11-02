@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 
 public class LoadContactsTask extends AsyncTask<Activity,LoadedContactsData,LoadedContactsData> {
 

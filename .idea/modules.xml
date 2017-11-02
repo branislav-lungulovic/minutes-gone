@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/android_simple_logger_facade/android_simple_logger_facade.iml" filepath="$PROJECT_DIR$/android_simple_logger_facade/android_simple_logger_facade.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AndroidMiniLoggr/app/miniloggr.iml" filepath="$PROJECT_DIR$/../AndroidMiniLoggr/app/miniloggr.iml" />
       <module fileurl="file://$PROJECT_DIR$/minutes-gone.iml" filepath="$PROJECT_DIR$/minutes-gone.iml" />
     </modules>
   </component>

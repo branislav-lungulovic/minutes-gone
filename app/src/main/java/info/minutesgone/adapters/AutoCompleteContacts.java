@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-import info.minutesgone.shared.Logger;
+import info.androidminiloggr.Logger;
 import info.minutesgone.tasks.LoadContactsTask;
 import info.minutesgone.tasks.LoadedContactsData;
 import info.minutesgone.tasks.OnTaskEnd;

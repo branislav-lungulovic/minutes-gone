@@ -16,7 +16,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
@@ -45,5 +45,7 @@ dependencies {
     compile 'pl.pawelkleczkowski.customgauge:CustomGauge:1.0.3'
     compile 'joda-time:joda-time:2.9.9'
     compile 'com.googlecode.libphonenumber:libphonenumber:8.8.4'
+    debugCompile project(path: ':miniloggr', configuration: "debug")
+    releaseCompile project(path: ':miniloggr', configuration: "release")
     testCompile 'junit:junit:4.12'
 }

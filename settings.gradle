@@ -1,1 +1,3 @@
-include ':app', ':android_simple_logger_facade'
+include ':app'
+include ':miniloggr'
+project(':miniloggr').projectDir = new File('../AndroidMiniLoggr/app')
