@@ -6,7 +6,7 @@ This document is available in other languages: English, Srpski or Српски
 
 ## Features
 
-+ Dashboard showing how much minutes from the monthly plan time has been spent.
++ Dashboard showing how much minutes from the monthly plan has been spent.
 + Define phone numbers excluded from monthly quota.    
 + Define start billing day in month.    
 + Define number of minutes included in quota.    
