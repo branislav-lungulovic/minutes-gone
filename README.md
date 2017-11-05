@@ -28,7 +28,7 @@ About page                 |  Main menu
 :-------------------------:|:-------------------------:
 ![](/screenshots/en/small/s-about.jpg?raw=true)  |  ![](/screenshots/en/small/s-menu.jpg?raw=true)
 
-Free numbers list                |  Add numbers
+Free numbers list                |  Add number
 :-------------------------:|:-------------------------:
 ![](/screenshots/en/small/s-contact-list.jpg?raw=true)  |  ![](/screenshots/en/small/s-contact-list-add.jpg?raw=true)
 
