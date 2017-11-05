@@ -82,7 +82,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@+id/lblName"
-            android:text="1.0" />
+            android:text="1.0.0" />
 
         <TextView
             android:id="@+id/lblLicence"
@@ -108,7 +108,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_toRightOf="@+id/lblLicence"
-            android:text="Apache License, Version 2.0" />
+            android:text="GNU GPL 3" />
 
         <TextView
             android:id="@+id/textAbAuth"
