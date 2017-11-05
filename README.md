@@ -20,9 +20,22 @@ This document is available in other languages: English, Srpski or Српски
 
 ## Screenshots
 
-Solarized dark             |  Solarized Ocean
+Dashboard                  |  Settings
+:-------------------------:|:-------------------------:
+![](/screenshots/en/small/s-dash.jpg?raw=true)  |  ![](/screenshots/en/small/s-settings.jpg?raw=true)
+
+About page                 |  Main menu
 :-------------------------:|:-------------------------:
 ![](/screenshots/en/small/s-about.jpg?raw=true)  |  ![](/screenshots/en/small/s-menu.jpg?raw=true)
+
+Free numbers list                |  Add numbers
+:-------------------------:|:-------------------------:
+![](/screenshots/en/small/s-contact-list.jpg?raw=true)  |  ![](/screenshots/en/small/s-contact-list-add.jpg?raw=true)
+
+Delete numbers                |  Status bar
+:-------------------------:|:-------------------------:
+![](/screenshots/en/small/s-status-bar.jpg?raw=true)  |  ![](/screenshots/en/small/s-contact-list-add.jpg?raw=true)
+
 
 
 ## License
