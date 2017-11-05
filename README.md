@@ -22,7 +22,7 @@ This document is available in other languages: English, Srpski or Српски
 
 Solarized dark             |  Solarized Ocean
 :-------------------------:|:-------------------------:
-![](/screenshots/en/small/s-about.png?raw=true)  |  ![](/screenshots/en/small/s-menu.png?raw=true)
+![](/screenshots/en/small/s-about.jpg?raw=true)  |  ![](/screenshots/en/small/s-menu.jpg?raw=true)
 
 
 ## License
