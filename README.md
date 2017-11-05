@@ -34,7 +34,7 @@ Free numbers list                |  Add numbers
 
 Delete numbers                |  Status bar
 :-------------------------:|:-------------------------:
-![](/screenshots/en/small/s-status-bar.jpg?raw=true)  |  ![](/screenshots/en/small/s-contact-list-add.jpg?raw=true)
+![](/screenshots/en/small/s-contact-list-delete.jpg?raw=true)  |  ![](/screenshots/en/small/s-status-bar.jpg?raw=true)
 
 
 
