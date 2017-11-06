@@ -45,7 +45,12 @@ dependencies {
     compile 'pl.pawelkleczkowski.customgauge:CustomGauge:1.0.3'
     compile 'joda-time:joda-time:2.9.9'
     compile 'com.googlecode.libphonenumber:libphonenumber:8.8.4'
-    debugCompile project(path: ':miniloggr', configuration: "debug")
-    releaseCompile project(path: ':miniloggr', configuration: "release")
     testCompile 'junit:junit:4.12'
+    releaseCompile('info.androidminiloggr:lib:1.0.0:release@aar') {
+        transitive=true
+    }
+    debugCompile('info.androidminiloggr:lib:1.0.0:debug@aar') {
+        transitive=true
+    }
+
 }
