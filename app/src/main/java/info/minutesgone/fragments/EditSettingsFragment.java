@@ -112,6 +112,13 @@ public class EditSettingsFragment extends Fragment implements OnTaskEnd<CallLogD
             edDay.setError(getString(R.string.dayInMonth_required));
             edDay.requestFocus();
             return false;
+        }else{
+            int dValue = Integer.parseInt(edDay.getText().toString());
+            if (!(1 <= dValue && dValue <= 31)) {
+                edDay.setError(getString(R.string.dayInMonth_required));
+                edDay.requestFocus();
+                return false;
+            }
         }
 
         if (edMinutes.getText().toString().isEmpty()) {

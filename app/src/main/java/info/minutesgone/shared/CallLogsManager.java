@@ -209,8 +209,13 @@ public class CallLogsManager {
     }
 
     private Pair<LocalDate, LocalDateTime> createDateRange(Preferences preferences) {
-
-        LocalDate monthBegin = new LocalDate().withDayOfMonth(preferences.getDay());
+        LocalDate now = new LocalDate();
+        int lastDayInMonth = now.dayOfMonth().getMaximumValue();
+        int begginingDate = preferences.getDay();
+        if(preferences.getDay() >= lastDayInMonth){
+            begginingDate = lastDayInMonth -1;
+        }
+        LocalDate monthBegin = new LocalDate().withDayOfMonth(begginingDate);
         LocalDateTime monthEnd = monthBegin.plusMonths(1).plusDays(1).toLocalDateTime(LocalTime.MIDNIGHT);
 
         logger.d("dates: " + monthBegin + ", " + monthEnd);

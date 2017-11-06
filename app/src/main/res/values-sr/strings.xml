@@ -15,7 +15,7 @@
     <string name="contact_name">Назив контакта</string>
     <string name="contact_saved">Контакти снимљени</string>
     <string name="dayInMonth">Дан почетка мерења у месецу</string>
-    <string name="dayInMonth_required">Дан почетка мерења је обавезан</string>
+    <string name="dayInMonth_required">Дан почетка мерења је обавезан и мора бити између 1 и 31</string>
     <string name="delete">Обриши</string>
     <string name="free_minutes">Остали позиви:</string>
     <string name="free_minutes_val"><![CDATA[%1$s <b>мин</b>]]></string>

@@ -11,7 +11,7 @@
     <string name="edit_phone_fragment" translatable="false">Hello edit phone</string>
     <string name="phone_num">Phone number</string>
     <string name="dayInMonth">Start billing day in month</string>
-    <string name="dayInMonth_required">Start day in month is required</string>
+    <string name="dayInMonth_required">Start day in month is required and must be between 1 and 31</string>
     <string name="to">to</string>
     <string name="contact_name">Contact name</string>
     <string name="alert_level_notice">(Alert level in percents. Zero value: no alerts)</string>
