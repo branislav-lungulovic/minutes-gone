@@ -2,7 +2,7 @@
 
 Simple Android application for measuring and reporting if monthly postpaid minutes quota has been reached.
 
-This document is available in other languages: English, Srpski or Српски
+This document is available in other languages: [English](README.md), [Srpski](README.sr-Latn-RS.md) or [Српски](README.sr-RS.md)
 
 ## Features
 
