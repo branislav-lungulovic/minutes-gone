@@ -1,12 +1,17 @@
 apply plugin: 'com.android.application'
 
+Properties properties = new Properties()
+properties.load(project.file('local.properties').newDataInputStream())
+def ANDROID_STORE_PASSWORD = properties.getProperty('ANDROID_STORE_PASSWORD')
+def ANDROID_KEY_PASSWORD = properties.getProperty('ANDROID_KEY_PASSWORD.dir')
+
 android {
     signingConfigs {
         app {
             keyAlias 'appkey'
-            keyPassword 'esrxMmnuaLIpoeshrjow'
+                keyPassword ANDROID_KEY_PASSWORD
             storeFile file('C:/Users/bane/Dropbox/android-ks/keystore.jks')
-            storePassword 'esrxMmnuaLIpoeshrjow'
+            storePassword ANDROID_STORE_PASSWORD
         }
     }
     compileSdkVersion 25
