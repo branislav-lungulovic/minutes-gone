@@ -22,11 +22,14 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
     }
+
+    archivesBaseName = "minutes-gone"+defaultConfig.versionName
+
     buildTypes {
         release {
             minifyEnabled false
