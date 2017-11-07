@@ -16,7 +16,7 @@ This document is available in other languages: [English](README.md), [Srpski](RE
 
 ## Install
 
-#### F-druid ref
+Download installation apk file from: [minutes-gone1.0.1-release.apk](/release/signed/minutes-gone1.0.1-release.apk?raw=true)
 
 ## Screenshots
 
