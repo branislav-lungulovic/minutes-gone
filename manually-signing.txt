@@ -11,6 +11,7 @@ $ keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg
 
 $ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore my_application.apk alias_name
 
+
     Verify that your APK is signed. For example −
 
 $ jarsigner -verify -verbose -certs my_application.apk
