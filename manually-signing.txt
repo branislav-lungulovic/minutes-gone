@@ -18,4 +18,4 @@ $ jarsigner -verify -verbose -certs my_application.apk
 
     Align the final APK package using zipalign.
 
-$ zipalign -v 4 your_project_name-unaligned.apk your_project_name.apk
+$ zipalign -v 4 your_project_name-unaligned.apk your_project_name.apk	
